@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">TesteZupLucas</string>
+
+    <!--Login-->
+    <string name="button_login">Login</string>
+    <string name="hint_user_login">User</string>
+    <string name="hint_pass_login">Password</string>
+
+    <!--Home-->
+    <string name="name_user">Jose da Silva Teste</string>
+    <string name="account">Conta</string>
+    <string name="account_number">#### / ##.#######&#8211;#</string>
+    <string name="account_balance">Saldo</string>
+    <string name="account_balance_value">R$#.###,##</string>
+    <string name="recents">Recentes</string>
+
+
+</resources>
