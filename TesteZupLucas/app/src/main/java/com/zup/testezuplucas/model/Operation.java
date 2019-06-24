@@ -1,4 +1,4 @@
-package com.zup.testezuplucas;
+package com.zup.testezuplucas.model;
 
 public class Operation {
     private String title;
@@ -6,7 +6,10 @@ public class Operation {
     private String date;
     private String value;
 
-    Operation(String title, String desc, String date, String value){
+    public Operation() {
+    }
+
+    public Operation(String title, String desc, String date, String value) {
         this.title = title;
         this.desc = desc;
         this.date = date;

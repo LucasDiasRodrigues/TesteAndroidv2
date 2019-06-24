@@ -1,4 +1,4 @@
-package com.zup.testezuplucas;
+package com.zup.testezuplucas.home;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +7,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.zup.testezuplucas.R;
+import com.zup.testezuplucas.model.Operation;
 
 import java.util.ArrayList;
 

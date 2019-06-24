@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.zup.testezuplucas">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,8 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HomeActivity"></activity>
-        <activity android:name=".LoginActivity" android:theme="@style/AppTheme.TransparentTheme">
+        <activity android:name=".home.HomeActivity"></activity>
+        <activity android:name=".login.LoginActivity" android:theme="@style/AppTheme.TransparentTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

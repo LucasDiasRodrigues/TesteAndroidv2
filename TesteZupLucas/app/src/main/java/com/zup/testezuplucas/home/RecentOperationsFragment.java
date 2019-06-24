@@ -1,4 +1,4 @@
-package com.zup.testezuplucas;
+package com.zup.testezuplucas.home;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,12 +11,25 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.zup.testezuplucas.R;
+import com.zup.testezuplucas.login.LoginController;
+import com.zup.testezuplucas.model.Operation;
+import com.zup.testezuplucas.util.PreferencesController;
+
 import java.util.ArrayList;
 
-public class RecentOperationsFragment extends Fragment {
+
+interface ListOperationsInterface{
+
+    void listOperationsSuccess(ArrayList<Operation> operations);
+
+}
+
+public class RecentOperationsFragment extends Fragment implements ListOperationsInterface {
 
     private RecyclerView recyclerView;
-    private OperationsListAdapter adapter;
+    private ArrayList<Operation> operations;
+
 
     @Nullable
     @Override
@@ -28,17 +41,15 @@ public class RecentOperationsFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
 
-        //teste
-        ArrayList<Operation> operations = new ArrayList<>();
-        for(int i=0; i <10; i++){
-            operations.add(new Operation("Pagamento", "Conta de agua", "17/12/1992", "R$136,00"));
-        }
-        //
-
-        adapter = new OperationsListAdapter(operations);
-        recyclerView.setAdapter(adapter);
-
+        OperationsFragmentController controller = new OperationsFragmentController(this);
+        controller.getOperarionsList(PreferencesController.getInstance(getContext()).getLoggedUser());
 
         return fragment;
+    }
+
+    @Override
+    public void listOperationsSuccess(ArrayList<Operation> operations) {
+        this.operations = operations;
+        recyclerView.setAdapter(new OperationsListAdapter(this.operations));
     }
 }
