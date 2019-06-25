@@ -4,12 +4,12 @@ public class Operation {
     private String title;
     private String desc;
     private String date;
-    private String value;
+    private float value;
 
     public Operation() {
     }
 
-    public Operation(String title, String desc, String date, String value) {
+    public Operation(String title, String desc, String date, float value) {
         this.title = title;
         this.desc = desc;
         this.date = date;
@@ -40,11 +40,11 @@ public class Operation {
         this.date = date;
     }
 
-    public String getValue() {
+    public float getValue() {
         return value;
     }
 
-    public void setValue(String value) {
+    public void setValue(float value) {
         this.value = value;
     }
 }

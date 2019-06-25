@@ -40,7 +40,7 @@ public class OperationsFragmentController {
 
             @Override
             public void onFailure(Call<ListOperationsPOJO> call, Throwable t) {
-
+                fragmentRef.get().listOperationsFailure();
             }
         });
 

@@ -48,4 +48,11 @@ public final class PreferencesController {
             return null;
         }
     }
+
+    public void deleteLoggedUser(){
+        prefs = context.getSharedPreferences("TesteNOSQLDB", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.clear();
+        editor.commit();
+    }
 }

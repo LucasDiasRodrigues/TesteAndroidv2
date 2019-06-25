@@ -1,17 +1,26 @@
 package com.zup.testezuplucas.home;
 
+import android.annotation.TargetApi;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.zup.testezuplucas.R;
 import com.zup.testezuplucas.model.Operation;
 
+import java.text.DateFormat;
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class OperationsListAdapter extends  RecyclerView.Adapter<OperationsListAdapter.OperationsViewHolder> {
     private ArrayList<Operation> operations;
@@ -30,9 +39,17 @@ public class OperationsListAdapter extends  RecyclerView.Adapter<OperationsListA
     @Override
     public void onBindViewHolder(@NonNull OperationsViewHolder holder, int position) {
         holder.operationType.setText(operations.get(position).getTitle());
-        holder.operationDate.setText(operations.get(position).getDate());
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+            Date date = dateFormat.parse(operations.get(position).getDate());
+            dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+            holder.operationDate.setText(dateFormat.format(date));
+        } catch (ParseException e) {
+            holder.operationDate.setText(operations.get(position).getDate());
+        }
+
         holder.operationName.setText(operations.get(position).getDesc());
-        holder.operationValue.setText(operations.get(position).getValue());
+        holder.operationValue.setText(NumberFormat.getCurrencyInstance().format(operations.get(position).getValue()));
     }
 
     @Override
