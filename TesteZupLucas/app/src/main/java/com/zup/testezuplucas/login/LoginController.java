@@ -2,10 +2,13 @@ package com.zup.testezuplucas.login;
 
 import android.util.Log;
 
+import com.zup.testezuplucas.R;
 import com.zup.testezuplucas.model.UserPOJO;
 import com.zup.testezuplucas.util.APICommunicationInterface;
 
 import java.lang.ref.WeakReference;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -45,5 +48,36 @@ public class LoginController {
                 LoginController.this.activityRef.get().loginFailure();
             }
         });
+    }
+
+    public boolean isUserValid(String user) {
+        Pattern patternCPF;
+        Matcher matcherCPF;
+
+        Pattern patternEmail;
+        Matcher matcherEmail;
+
+        final String CPF_PATTERN = "[0-9]{3}\\.?[0-9]{3}\\.?[0-9]{3}\\-?[0-9]{2}";
+        final String EMAIL_PATTERN = "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])";
+
+        patternCPF = Pattern.compile(CPF_PATTERN);
+        matcherCPF = patternCPF.matcher(user);
+
+        patternEmail = Pattern.compile(EMAIL_PATTERN);
+        matcherEmail = patternEmail.matcher(user);
+
+        return (matcherCPF.matches() || matcherEmail.matches());
+    }
+
+    public boolean isPasswordValid(String password) {
+        Pattern pattern;
+        Matcher matcherPassword;
+
+        final String PASSWORD_PATTERN = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#%!*:;?$_\\-.,%]).{4,20})";
+
+        pattern = Pattern.compile(PASSWORD_PATTERN);
+        matcherPassword = pattern.matcher(password);
+
+        return matcherPassword.matches();
     }
 }

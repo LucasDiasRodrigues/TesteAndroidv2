@@ -16,18 +16,15 @@ import com.zup.testezuplucas.home.HomeActivity;
 import com.zup.testezuplucas.model.User;
 import com.zup.testezuplucas.util.PreferencesController;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-
-interface loginInterface {
+interface LoginInterface {
     void loginSuccess(User user);
 
     void loginFailure();
 }
 
 
-public class LoginActivity extends AppCompatActivity implements loginInterface {
+public class LoginActivity extends AppCompatActivity implements LoginInterface {
 
     LoginController loginController;
 
@@ -45,14 +42,14 @@ public class LoginActivity extends AppCompatActivity implements loginInterface {
         checkIfHasUserSaved();
     }
 
-    public void checkIfHasUserSaved(){
+    public void checkIfHasUserSaved() {
         User pastUser = PreferencesController.getInstance(this).getLoggedUser();
-        if(pastUser != null){
+        if (pastUser != null) {
             askIfUserWantToContinueLoggedIn(pastUser);
         }
     }
 
-    public void askIfUserWantToContinueLoggedIn(final User pastUser){
+    public void askIfUserWantToContinueLoggedIn(final User pastUser) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(getString(R.string.dialog_hi) + " " + pastUser.getName());
         builder.setMessage(R.string.dialog_welcome_back);
@@ -70,7 +67,7 @@ public class LoginActivity extends AppCompatActivity implements loginInterface {
         dialog.show();
     }
 
-    public void logOut(){
+    public void logOut() {
         PreferencesController.getInstance(this).deleteLoggedUser();
     }
 
@@ -99,34 +96,11 @@ public class LoginActivity extends AppCompatActivity implements loginInterface {
     }
 
     public boolean isUserValid(String user) {
-        Pattern patternCPF;
-        Matcher matcherCPF;
-
-        Pattern patternEmail;
-        Matcher matcherEmail;
-
-        final String CPF_PATTERN = getString(R.string.regex_cpf);
-        final String EMAIL_PATTERN = getString(R.string.regex_email);
-
-        patternCPF = Pattern.compile(CPF_PATTERN);
-        matcherCPF = patternCPF.matcher(user);
-
-        patternEmail = Pattern.compile(EMAIL_PATTERN);
-        matcherEmail = patternEmail.matcher(user);
-
-        return (matcherCPF.matches() || matcherEmail.matches());
+        return loginController.isUserValid(user);
     }
 
     public boolean isPasswordValid(String password) {
-        Pattern pattern;
-        Matcher matcherPassword;
-
-        final String PASSWORD_PATTERN = getString(R.string.regex_password);
-
-        pattern = Pattern.compile(PASSWORD_PATTERN);
-        matcherPassword = pattern.matcher(password);
-
-        return matcherPassword.matches();
+        return loginController.isPasswordValid(password);
     }
 
     public void setUserInputError() {
