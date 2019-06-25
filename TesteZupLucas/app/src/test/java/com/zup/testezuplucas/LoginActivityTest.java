@@ -3,6 +3,7 @@ package com.zup.testezuplucas;
 
 import com.zup.testezuplucas.login.LoginActivity;
 import com.zup.testezuplucas.login.LoginController;
+import com.zup.testezuplucas.model.User;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -39,13 +40,4 @@ public class LoginActivityTest {
         Assert.assertTrue(controller.isPasswordValid("Lucas@123_ABC"));
     }
 
-    @Test
-    public void LoginController_ShouldBe_Valid(){
-        LoginActivity activity = Mockito.mock(LoginActivity.class);
-        LoginController controller = new LoginController(activity);
-        Assert.assertFalse(controller.isPasswordValid("hvdyuvweyivf"));
-        Assert.assertFalse(controller.isPasswordValid("dede1568"));
-        Assert.assertFalse(controller.isPasswordValid("AGYD4516181hduibwy"));
-        Assert.assertTrue(controller.isPasswordValid("Lucas@123_ABC"));
-    }
 }
