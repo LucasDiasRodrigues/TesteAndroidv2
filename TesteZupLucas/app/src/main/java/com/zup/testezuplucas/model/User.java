@@ -70,21 +70,6 @@ public class User implements Serializable {
         this.balance = balance;
     }
 
-    public String getCompleteAccountFormated() {
-        return bankAccount  + " / " + maskAgencyNumber();
-    }
-
-    private String maskAgencyNumber(){
-        String str = getAgency();
-        if(str.length() > 7){
-            str = new StringBuilder(str).insert(str.length()-1, "-")
-                    .insert(str.length() - 8, ".")
-                    .toString();
-        }
-
-        return str;
-    }
-
     @NonNull
     @Override
     public String toString() {

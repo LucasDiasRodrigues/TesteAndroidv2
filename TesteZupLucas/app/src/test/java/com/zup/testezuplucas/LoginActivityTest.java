@@ -3,7 +3,6 @@ package com.zup.testezuplucas;
 
 import com.zup.testezuplucas.login.LoginActivity;
 import com.zup.testezuplucas.login.LoginController;
-import com.zup.testezuplucas.model.User;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -15,13 +14,13 @@ import org.mockito.junit.MockitoJUnitRunner;
 public class LoginActivityTest {
 
     @Test
-    public void LoginActivity_ShouldNoy_be_Null(){
+    public void LoginActivity_ShouldNoy_be_Null() {
         LoginActivity activity = Mockito.spy(LoginActivity.class);
         Assert.assertNotNull(activity);
     }
 
     @Test
-    public void user_ShouldBe_Valid(){
+    public void user_ShouldBe_Valid() {
         LoginActivity activity = Mockito.mock(LoginActivity.class);
         LoginController controller = new LoginController(activity);
         Assert.assertTrue(controller.isUserValid("39949462800"));
@@ -31,7 +30,7 @@ public class LoginActivityTest {
     }
 
     @Test
-    public void password_ShouldBe_Valid(){
+    public void password_ShouldBe_Valid() {
         LoginActivity activity = Mockito.mock(LoginActivity.class);
         LoginController controller = new LoginController(activity);
         Assert.assertFalse(controller.isPasswordValid("hvdyuvweyivf"));

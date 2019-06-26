@@ -14,6 +14,7 @@ import com.zup.testezuplucas.R;
 import com.zup.testezuplucas.login.LoginActivity;
 import com.zup.testezuplucas.model.User;
 import com.zup.testezuplucas.util.PreferencesController;
+import com.zup.testezuplucas.util.ValueFormatter;
 
 import java.text.NumberFormat;
 
@@ -33,8 +34,8 @@ public class HomeActivity extends AppCompatActivity {
 
     public void setUpHeader(User user) {
         ((TextView) findViewById(R.id.headerUserName)).setText(user.getName());
-        ((TextView) findViewById(R.id.headerUserAccount)).setText(user.getCompleteAccountFormated());
-        ((TextView) findViewById(R.id.headerUserBalance)).setText(NumberFormat.getCurrencyInstance().format(user.getBalance()));
+        ((TextView) findViewById(R.id.headerUserAccount)).setText(ValueFormatter.formatUserAccount(user));
+        ((TextView) findViewById(R.id.headerUserBalance)).setText(ValueFormatter.formatCurrency(user.getBalance()));
     }
 
     public void startMainFragment() {
