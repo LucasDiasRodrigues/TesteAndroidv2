@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">TesteZupLucas</string>
+
+    <!--Login-->
+    <string name="button_login">Login</string>
+    <string name="hint_user_login">User</string>
+    <string name="hint_pass_login">Password</string>
+    <string name="user_input_error">Digite seu email ou CPF</string>
+    <string name="password_input_error">A senha deve conter pelo menos uma letra maiúscula, um número e um caracter especial</string>
+    <string name="dialog_hi">Olá </string>
+    <string name="dialog_welcome_back">Bem vindx de volta!</string>
+    <string name="continue_session">Continuar minha sessão</string>
+    <string name="another_user">Logar com um usuário diferente</string>
+
+    <!--Home-->
+    <string name="name_user">Jose da Silva Teste</string>
+    <string name="account">Conta</string>
+    <string name="account_number">#### / ##.#######&#8211;#</string>
+    <string name="account_balance">Saldo</string>
+    <string name="account_balance_value">R$#.###,##</string>
+    <string name="recents">Recentes</string>
+
+    <string name="dialog_logout_title">Sair</string>
+    <string name="dialog_logout_message">Deseja mesmo encerrar sua sessão?</string>
+    <string name="dialog_logout_yes">Encerrar</string>
+    <string name="dialog_logout_no">Cancelar</string>
+
+
+</resources>
